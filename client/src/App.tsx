@@ -7,6 +7,7 @@ import { LandingPage } from "@/components/landing-page";
 import { SetSelection } from "@/components/set-selection";
 import { QuizInterface } from "@/components/quiz-interface";
 import { ResultsPage } from "@/components/results-page";
+import { Leaderboard } from "@/components/leaderboard";
 
 function QuizApp() {
   const { state } = useQuiz();
@@ -20,6 +21,8 @@ function QuizApp() {
       return <QuizInterface />;
     case "results":
       return <ResultsPage />;
+    case "leaderboard":
+      return <Leaderboard />;
     default:
       return <LandingPage />;
   }
