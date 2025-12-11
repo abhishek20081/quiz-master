@@ -6,11 +6,32 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
+  // Get all available quiz sets
+  app.get("/api/quiz/sets", async (_req, res) => {
+    try {
+      const sets = await storage.getAllQuizSets();
+      res.json(sets);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch quiz sets" });
+    }
+  });
 
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+  // Get a specific quiz set with questions
+  app.get("/api/quiz/set/:setId", async (req, res) => {
+    try {
+      const { setId } = req.params;
+      const quizSet = await storage.getQuizSet(setId.toUpperCase());
+      
+      if (!quizSet) {
+        res.status(404).json({ error: "Quiz set not found" });
+        return;
+      }
+
+      res.json(quizSet);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch quiz set" });
+    }
+  });
 
   return httpServer;
 }
