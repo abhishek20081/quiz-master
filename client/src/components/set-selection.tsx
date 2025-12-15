@@ -12,7 +12,8 @@ interface QuizSetResponse {
 }
 
 export function SetSelection() {
-  const { playerName, selectSet, setQuestions, startQuiz, resetQuiz } = useQuiz();
+  const { playerName, selectSet, setQuestions, startQuiz, resetQuiz } =
+    useQuiz();
 
   const { data: setA, isLoading: loadingA } = useQuery<QuizSetResponse>({
     queryKey: ["/api/quiz/set/A"],
@@ -31,7 +32,24 @@ export function SetSelection() {
   const isLoading = loadingA || loadingB;
 
   return (
-    <div className="min-h-screen flex flex-col p-4 bg-background">
+    <div className="min-h-screen flex flex-col p-4 bg-gradient-to-br from-indigo-500 to-purple-600">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source src="/video/video.mp4" type="video/mp4" />
+      </video>
       <div className="mb-6">
         <Button
           variant="ghost"
@@ -44,14 +62,23 @@ export function SetSelection() {
           Back
         </Button>
       </div>
-
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center" style={{ position: 'relative', zIndex: 10 }}>
         <div className="w-full max-w-4xl space-y-8">
           <div className="text-center space-y-2">
             <p className="text-lg text-muted-foreground">
-              Welcome, <span className="font-semibold text-foreground" data-testid="text-player-name">{playerName}</span>!
+              Welcome,{" "}
+              <span
+                className="font-semibold text-foreground"
+                data-testid="text-player-name"
+              >
+                {playerName}
+              </span>
+              !
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold" data-testid="text-choose-set">
+            <h2
+              className="text-3xl md:text-4xl font-bold"
+              data-testid="text-choose-set"
+            >
               Choose Your Challenge
             </h2>
             <p className="text-muted-foreground">
@@ -76,10 +103,10 @@ export function SetSelection() {
                   </div>
                   <div>
                     <h3 className="text-4xl font-bold mb-2">SET A</h3>
-                    <p className="text-muted-foreground">20 Questions</p>
+                    <p className="text-muted-foreground">10 Questions</p>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    General knowledge and trivia
+                    python fundamental-A
                   </p>
                 </CardContent>
               </Card>
@@ -95,10 +122,10 @@ export function SetSelection() {
                   </div>
                   <div>
                     <h3 className="text-4xl font-bold mb-2">SET B</h3>
-                    <p className="text-muted-foreground">20 Questions</p>
+                    <p className="text-muted-foreground">10 Questions</p>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Science and technology
+                    python fundamental-B
                   </p>
                 </CardContent>
               </Card>

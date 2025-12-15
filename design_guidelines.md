@@ -36,7 +36,7 @@ This quiz application requires clarity, instant feedback, and engaging interacti
 - **Card Design:**
   - Tall, clickable cards (min-h-64)
   - Large "SET A" / "SET B" labels (text-4xl font-bold)
-  - Question count indicator ("20 Questions")
+  - Question count indicator ("10 Questions")
   - Subtle border with hover effect
 - **Layout:** max-w-4xl centered
 

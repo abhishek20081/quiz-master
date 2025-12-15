@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
 import type { Question, QuizResult } from "@shared/schema";
 
-type QuizState = "landing" | "set-selection" | "quiz" | "results";
+type QuizState = "landing" | "set-selection" | "quiz" | "results" | "leaderboard";
 
 interface QuizContextType {
   state: QuizState;
@@ -23,6 +23,7 @@ interface QuizContextType {
   finishQuiz: () => void;
   resetQuiz: () => void;
   goToSetSelection: () => void;
+  goToLeaderboard: () => void;
 }
 
 const QuizContext = createContext<QuizContextType | null>(null);
@@ -105,7 +106,10 @@ export function QuizProvider({ children }: { children: ReactNode }) {
     setStartTime(null);
     setQuizResult(null);
   }, []);
-
+  const goToLeaderboard = useCallback(() => {
+    setState("leaderboard");
+  }, []);
+  
   const handleSetPlayerName = useCallback((name: string) => {
     setPlayerName(name);
     setState("set-selection");
@@ -132,6 +136,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
         finishQuiz,
         resetQuiz,
         goToSetSelection,
+        goToLeaderboard,
       }}
     >
       {children}

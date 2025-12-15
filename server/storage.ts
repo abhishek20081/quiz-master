@@ -1,71 +1,173 @@
 import type { Question, QuizSet } from "@shared/schema";
 
-// Quiz questions for SET A - General Knowledge
 const setAQuestions: Question[] = [
-  { id: 1, question: "What is the capital of France?", options: ["London", "Berlin", "Paris", "Madrid"], correctAnswer: 2 },
-  { id: 2, question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Jupiter", "Saturn"], correctAnswer: 1 },
-  { id: 3, question: "Who painted the Mona Lisa?", options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"], correctAnswer: 2 },
-  { id: 4, question: "What is the largest ocean on Earth?", options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"], correctAnswer: 3 },
-  { id: 5, question: "In which year did World War II end?", options: ["1943", "1944", "1945", "1946"], correctAnswer: 2 },
-  { id: 6, question: "What is the chemical symbol for gold?", options: ["Go", "Gd", "Au", "Ag"], correctAnswer: 2 },
-  { id: 7, question: "Which country is home to the kangaroo?", options: ["New Zealand", "South Africa", "Australia", "India"], correctAnswer: 2 },
-  { id: 8, question: "What is the largest mammal in the world?", options: ["African Elephant", "Blue Whale", "Giraffe", "Hippopotamus"], correctAnswer: 1 },
-  { id: 9, question: "How many continents are there on Earth?", options: ["5", "6", "7", "8"], correctAnswer: 2 },
-  { id: 10, question: "What is the currency of Japan?", options: ["Yuan", "Won", "Yen", "Ringgit"], correctAnswer: 2 },
-  { id: 11, question: "Who wrote 'Romeo and Juliet'?", options: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"], correctAnswer: 1 },
-  { id: 12, question: "What is the smallest country in the world?", options: ["Monaco", "San Marino", "Vatican City", "Liechtenstein"], correctAnswer: 2 },
-  { id: 13, question: "Which element has the atomic number 1?", options: ["Helium", "Hydrogen", "Oxygen", "Carbon"], correctAnswer: 1 },
-  { id: 14, question: "What is the capital of Australia?", options: ["Sydney", "Melbourne", "Canberra", "Perth"], correctAnswer: 2 },
-  { id: 15, question: "How many bones are in the adult human body?", options: ["186", "206", "226", "246"], correctAnswer: 1 },
-  { id: 16, question: "Which planet has the most moons?", options: ["Jupiter", "Saturn", "Uranus", "Neptune"], correctAnswer: 1 },
-  { id: 17, question: "What year was the first iPhone released?", options: ["2005", "2006", "2007", "2008"], correctAnswer: 2 },
-  { id: 18, question: "What is the hardest natural substance on Earth?", options: ["Gold", "Iron", "Diamond", "Platinum"], correctAnswer: 2 },
-  { id: 19, question: "Which blood type is known as the universal donor?", options: ["A", "B", "AB", "O"], correctAnswer: 3 },
-  { id: 20, question: "What is the longest river in the world?", options: ["Amazon", "Nile", "Mississippi", "Yangtze"], correctAnswer: 1 },
+  {
+    id: "1",
+    question: "Python was developed by:",
+    options: [
+      "James Gosling",
+      "Guido van Rossum",
+      "Dennis Ritchie",
+      "Tim Berners-Lee",
+    ],
+    correctAnswer: 1,
+  },
+  {
+    id: "2",
+    question: "Python was released in the year:",
+    options: ["1990", "1989", "1991", "2000"],
+    correctAnswer: 2,
+  },
+  {
+    id: "3",
+    question: "Python is:",
+    options: [
+      "High-level language",
+      "Low-level language",
+      "Machine language",
+      "Assembly language",
+    ],
+    correctAnswer: 0,
+  },
+  {
+    id: "4",
+    question: "The smallest unit in a Python program is called:",
+    options: ["Identifier", "Token", "Literal", "Character"],
+    correctAnswer: 1,
+  },
+  {
+    id: "5",
+    question: "Which of the following is not a Python token?",
+    options: ["Identifiers", "Keywords", "Operators", "Modules"],
+    correctAnswer: 3,
+  },
+  {
+    id: "6",
+    question: "Which of the following is NOT a Python keyword?",
+    options: ["while", "for", "goto", "break"],
+    correctAnswer: 2,
+  },
+  {
+    id: "7",
+    question: "Which of the following is a valid identifier?",
+    options: ["1value", "value_1", "for", "value-1"],
+    correctAnswer: 1,
+  },
+  {
+    id: "8",
+    question: "A literal in Python means:",
+    options: ["A keyword", "A fixed value", "A variable", "A function name"],
+    correctAnswer: 1,
+  },
+  {
+    id: "9",
+    question: "Which of the following is not a numeric literal?",
+    options: ["25", "3.14", '"25"', "0b1010"],
+    correctAnswer: 2,
+  },
+  {
+    id: "10",
+    question: "In Python, a string literal can be enclosed in:",
+    options: [
+      "Single quotes",
+      "Double quotes",
+      "Triple quotes",
+      "All of these",
+    ],
+    correctAnswer: 3,
+  },
 ];
 
-// Quiz questions for SET B - Science and Technology
 const setBQuestions: Question[] = [
-  { id: 1, question: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Computer Processing Unit"], correctAnswer: 0 },
-  { id: 2, question: "What is the speed of light in a vacuum?", options: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"], correctAnswer: 0 },
-  { id: 3, question: "Who is known as the father of modern physics?", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correctAnswer: 1 },
-  { id: 4, question: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Home Tool Markup Language"], correctAnswer: 0 },
-  { id: 5, question: "What is the chemical formula for water?", options: ["H2O", "CO2", "NaCl", "O2"], correctAnswer: 0 },
-  { id: 6, question: "Which programming language is known as the 'mother of all languages'?", options: ["Java", "Python", "C", "FORTRAN"], correctAnswer: 2 },
-  { id: 7, question: "What is the unit of electrical resistance?", options: ["Volt", "Ampere", "Ohm", "Watt"], correctAnswer: 2 },
-  { id: 8, question: "Who invented the telephone?", options: ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "Guglielmo Marconi"], correctAnswer: 2 },
-  { id: 9, question: "What is the largest organ in the human body?", options: ["Liver", "Brain", "Heart", "Skin"], correctAnswer: 3 },
-  { id: 10, question: "What does RAM stand for?", options: ["Read Access Memory", "Random Access Memory", "Run Access Memory", "Read And Modify"], correctAnswer: 1 },
-  { id: 11, question: "What is the boiling point of water at sea level?", options: ["90°C", "100°C", "110°C", "120°C"], correctAnswer: 1 },
-  { id: 12, question: "Who developed the theory of relativity?", options: ["Isaac Newton", "Stephen Hawking", "Albert Einstein", "Max Planck"], correctAnswer: 2 },
-  { id: 13, question: "What is the study of fungi called?", options: ["Botany", "Mycology", "Zoology", "Ecology"], correctAnswer: 1 },
-  { id: 14, question: "Which gas makes up most of Earth's atmosphere?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], correctAnswer: 2 },
-  { id: 15, question: "What is the nearest star to Earth?", options: ["Proxima Centauri", "Alpha Centauri", "The Sun", "Sirius"], correctAnswer: 2 },
-  { id: 16, question: "What does DNA stand for?", options: ["Deoxyribonucleic Acid", "Dinitrogen Acid", "Deoxyribose Nucleic Acid", "Dynamic Nucleic Acid"], correctAnswer: 0 },
-  { id: 17, question: "Who invented the World Wide Web?", options: ["Bill Gates", "Steve Jobs", "Tim Berners-Lee", "Mark Zuckerberg"], correctAnswer: 2 },
-  { id: 18, question: "What is the powerhouse of the cell?", options: ["Nucleus", "Ribosome", "Mitochondria", "Golgi Apparatus"], correctAnswer: 2 },
-  { id: 19, question: "What is the most abundant element in the universe?", options: ["Helium", "Oxygen", "Carbon", "Hydrogen"], correctAnswer: 3 },
-  { id: 20, question: "What year was the first computer virus created?", options: ["1971", "1981", "1991", "2001"], correctAnswer: 0 },
+  {
+    id: "11",
+    question: "Which operator is used for floor division?",
+    options: ["/", "//", "%", "**"],
+    correctAnswer: 1,
+  },
+  {
+    id: "12",
+    question: "The operator used for exponentiation (power) is:",
+    options: ["^", "**", "*", "%"],
+    correctAnswer: 1,
+  },
+  {
+    id: "13",
+    question: "Which of the following is a relational operator?",
+    options: ["and", "or", ">=", "not"],
+    correctAnswer: 2,
+  },
+  {
+    id: "14",
+    question: "Which of the following is used to write a comment in Python?",
+    options: ["/", "/* */", "#", "--"],
+    correctAnswer: 2,
+  },
+  {
+    id: "15",
+    question: "What will be the output of print(type(True))?",
+    options: [
+      "<class 'bool'>",
+      "<class 'int'>",
+      "<class 'str'>",
+      "<class 'float'>",
+    ],
+    correctAnswer: 0,
+  },
+  {
+    id: "16",
+    question: "Python is a case-sensitive language.",
+    options: ["True", "False"],
+    correctAnswer: 0,
+  },
+  {
+    id: "17",
+    question: "Indentation in Python is used for:",
+    options: [
+      "Decoration",
+      "Separating lines",
+      "Defining blocks of code",
+      "None of these",
+    ],
+    correctAnswer: 2,
+  },
+  {
+    id: "18",
+    question: "Which of these is a valid string literal?",
+    options: ["'Hello", '"Hello"', "Hello", '""Hello""'],
+    correctAnswer: 1,
+  },
+  {
+    id: "19",
+    question: "Which of the following represents a Boolean literal?",
+    options: ["yes", "TRUE", "True", '"True"'],
+    correctAnswer: 2,
+  },
+  {
+    id: "20",
+    question: "Which symbol is used for modulo operator?",
+    options: ["/", "%", "//", "**"],
+    correctAnswer: 1,
+  },
 ];
 
-export interface IStorage {
-  getQuizSet(setId: string): Promise<QuizSet | undefined>;
-  getAllQuizSets(): Promise<{ id: string; name: string; questionCount: number }[]>;
-}
-
-export class MemStorage implements IStorage {
-  private quizSets: Map<string, QuizSet>;
+class MemStorage {
+  private quizSets = new Map<string, QuizSet>();
+  private leaderboard: Map<
+    string,
+    { name: string; score: number; timestamp: Date }[]
+  > = new Map();
 
   constructor() {
-    this.quizSets = new Map();
     this.quizSets.set("A", {
       id: "A",
-      name: "SET A - General Knowledge",
+      name: "SET A - Python Fundamentals",
       questions: setAQuestions,
     });
+
     this.quizSets.set("B", {
       id: "B",
-      name: "SET B - Science & Technology",
+      name: "SET B - Python Operators",
       questions: setBQuestions,
     });
   }
@@ -74,12 +176,32 @@ export class MemStorage implements IStorage {
     return this.quizSets.get(setId);
   }
 
-  async getAllQuizSets(): Promise<{ id: string; name: string; questionCount: number }[]> {
+  async getAllQuizSets(): Promise<
+    { id: string; name: string; questionCount: number }[]
+  > {
     return Array.from(this.quizSets.values()).map((set) => ({
       id: set.id,
       name: set.name,
       questionCount: set.questions.length,
     }));
+  }
+
+  async addLeaderboardEntry(
+    setId: string,
+    name: string,
+    score: number,
+  ): Promise<void> {
+    const entries = this.leaderboard.get(setId) || [];
+    entries.push({ name, score, timestamp: new Date() });
+    entries.sort((a, b) => b.score - a.score);
+    if (entries.length > 100) entries.pop();
+    this.leaderboard.set(setId, entries);
+  }
+
+  async getLeaderboard(
+    setId: string,
+  ): Promise<{ name: string; score: number; timestamp: Date }[]> {
+    return this.leaderboard.get(setId) || [];
   }
 }
 

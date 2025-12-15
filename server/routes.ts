@@ -33,5 +33,34 @@ export async function registerRoutes(
     }
   });
 
+  // Get leaderboard for a quiz set
+  app.get("/api/leaderboard/:setId", async (req, res) => {
+    try {
+      const { setId } = req.params;
+      const entries = await storage.getLeaderboard(setId.toUpperCase());
+      res.json(entries);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch leaderboard" });
+    }
+  });
+
+  // Add score to leaderboard
+  app.post("/api/leaderboard/:setId", async (req, res) => {
+    try {
+      const { setId } = req.params;
+      const { name, score } = req.body;
+
+      if (!name || score === undefined) {
+        res.status(400).json({ error: "Name and score are required" });
+        return;
+      }
+
+      await storage.addLeaderboardEntry(setId.toUpperCase(), name, score);
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to add leaderboard entry" });
+    }
+  });
+
   return httpServer;
 }

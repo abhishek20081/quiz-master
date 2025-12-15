@@ -1,18 +1,42 @@
+import React from "react";
 import { useQuiz } from "@/lib/quiz-context";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Trophy, Clock, CheckCircle2, XCircle, RotateCcw, ArrowRight } from "lucide-react";
+import {
+  Trophy,
+  Clock,
+  CheckCircle2,
+  XCircle,
+  RotateCcw,
+  ArrowRight,
+} from "lucide-react";
 
 export function ResultsPage() {
-  const { playerName, quizResult, resetQuiz, goToSetSelection, questions } = useQuiz();
+  const { playerName, quizResult, resetQuiz, goToSetSelection, questions } =
+    useQuiz();
 
   if (!quizResult) return null;
 
-  const { totalScore, correctAnswers, totalQuestions, timeTaken, answers } = quizResult;
+  const { totalScore, correctAnswers, totalQuestions, timeTaken, answers } =
+    quizResult; // Save score to leaderboard
+  const scorePercentage = (correctAnswers / totalQuestions) * 100;
   const maxPossibleScore = totalQuestions * 4;
-  const scorePercentage = Math.round((totalScore / maxPossibleScore) * 100);
-  const correctPercentage = Math.round((correctAnswers / totalQuestions) * 100);
+  const correctPercentage = Math.round(scorePercentage);
+
+  React.useEffect(() => {
+    if (playerName && quizResult) {
+      const { setId } = quizResult;
+      const score = totalScore;
+      fetch(`/api/leaderboard/${setId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: playerName, score }),
+      }).catch((err) =>
+        console.error("Failed to save leaderboard entry:", err),
+      );
+    }
+  }, [playerName, quizResult, totalScore]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -43,16 +67,26 @@ export function ResultsPage() {
               <Trophy className="w-12 h-12 text-chart-4" />
             </div>
           </div>
-          <p className="text-lg text-muted-foreground" data-testid="text-congratulations">
-            Congratulations, <span className="font-semibold text-foreground">{playerName}</span>!
+          <p
+            className="text-lg text-muted-foreground"
+            data-testid="text-congratulations"
+          >
+            Congratulations,{" "}
+            <span className="font-semibold text-foreground">{playerName}</span>!
           </p>
-          <h1 className={`text-6xl md:text-8xl font-bold ${getPerformanceColor()}`} data-testid="text-final-score">
+          <h1
+            className={`text-6xl md:text-8xl font-bold ${getPerformanceColor()}`}
+            data-testid="text-final-score"
+          >
             {totalScore}
           </h1>
           <p className="text-xl text-muted-foreground">
             out of {maxPossibleScore} points
           </p>
-          <p className={`text-2xl font-semibold ${getPerformanceColor()}`} data-testid="text-performance-message">
+          <p
+            className={`text-2xl font-semibold ${getPerformanceColor()}`}
+            data-testid="text-performance-message"
+          >
             {getPerformanceMessage()}
           </p>
         </div>
@@ -64,7 +98,10 @@ export function ResultsPage() {
                 <div className="flex justify-center">
                   <CheckCircle2 className="w-8 h-8 text-chart-2" />
                 </div>
-                <p className="text-3xl font-bold" data-testid="text-correct-count">
+                <p
+                  className="text-3xl font-bold"
+                  data-testid="text-correct-count"
+                >
                   {correctAnswers}/{totalQuestions}
                 </p>
                 <p className="text-sm text-muted-foreground">Correct Answers</p>
@@ -92,7 +129,8 @@ export function ResultsPage() {
               <h3 className="font-semibold">Question Breakdown</h3>
               <div className="grid grid-cols-5 gap-2">
                 {answers.map((answer, index) => {
-                  const isCorrect = answer.selectedAnswer === answer.correctAnswer;
+                  const isCorrect =
+                    answer.selectedAnswer === answer.correctAnswer;
                   return (
                     <div
                       key={index}
